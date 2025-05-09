@@ -6,4 +6,10 @@ migrate_up:
 sqlc:
 	sqlc generate --file=database/sqlc.yaml
 
-.PHONY: run migrate_up sqlc
+docker_up:
+	docker compose up -d
+
+docker_down:
+	docker compose down
+
+.PHONY: run migrate_up sqlc docker_up docker_down
