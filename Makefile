@@ -12,4 +12,7 @@ docker-up:
 docker-down:
 	docker compose down
 
-.PHONY: run migrate-up sqlc docker-up docker-down
+generate-proto:
+	cd api && protoc --go_out=. --go-grpc_opt=require_unimplemented_servers=false --go-grpc_out=. order.proto
+	
+.PHONY: run migrate-up sqlc docker-up docker-down generate-proto
